@@ -26,10 +26,7 @@ export function RegisterPage() {
       };
       console.log(usrData);
 
-      const response = await axios.post(
-        "http://localhost:5000/api/users/register",
-        usrData
-      );
+      const response = await axios.post("/api/users/register", usrData);
       console.log("User successfully registered:", response.data);
       alert("Registration successful! Please log in.");
       navigate("/login");

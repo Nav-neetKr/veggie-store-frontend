@@ -18,7 +18,7 @@ export function AdminProductList() {
   const handleDelete = async (productId) => {
     if (window.confirm("Do you want to remove the product?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/vegetables/${productId}`);
+        await axios.delete(`/api/vegetables/${productId}`);
         setVegetables((vegetables) =>
           vegetables.filter((it) => it._id != productId)
         );
@@ -35,9 +35,7 @@ export function AdminProductList() {
   useEffect(() => {
     const fetchVegetables = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/vegetables"
-        );
+        const response = await axios.get("/api/vegetables");
         setVegetables(response.data.data);
         setLoading(false);
       } catch (err) {

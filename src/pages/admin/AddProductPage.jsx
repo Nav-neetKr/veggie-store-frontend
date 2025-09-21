@@ -23,10 +23,7 @@ export function AddProductPage() {
       formData.append("stock", stock);
       formData.append("productImage", file);
 
-      const response = await axios.post(
-        "http://localhost:5000/api/vegetables",
-        formData
-      );
+      const response = await axios.post("/api/vegetables", formData);
       console.log(formData);
       navigate("/admin/products");
     } catch (err) {

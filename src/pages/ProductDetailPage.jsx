@@ -12,9 +12,7 @@ function ProductDetailPage() {
     const fetchVegetable = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(
-          `http://localhost:5000/api/vegetables/${id}`
-        );
+        const response = await axios.get(`/api/vegetables/${id}`);
         setVegetable(response.data.data);
       } catch (error) {
         console.log("Failed to get vegetable with id requested: ", error);

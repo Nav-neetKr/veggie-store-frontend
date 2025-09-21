@@ -12,7 +12,7 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const getCart = async () => {
-      const response = await axios.get("http://localhost:5000/api/cart");
+      const response = await axios.get("/api/cart");
       setCart(response.data);
     };
 
@@ -34,10 +34,7 @@ export function AuthProvider({ children }) {
         password,
       };
 
-      const response = await axios.post(
-        "http://localhost:5000/api/users/login",
-        usrData
-      );
+      const response = await axios.post("/api/users/login", usrData);
 
       const newToken = response.data.token;
       const newRole = response.data.role;
@@ -61,7 +58,7 @@ export function AuthProvider({ children }) {
 
   const addToCart = async (productId, quantity) => {
     try {
-      const response = await axios.post("http://localhost:5000/api/cart", {
+      const response = await axios.post("/api/cart", {
         productId,
         quantity,
       });
@@ -80,12 +77,9 @@ export function AuthProvider({ children }) {
     try {
       console.log("product id: ", productId);
       console.log("quantity: ", quantity);
-      const response = await axios.put(
-        `http://localhost:5000/api/cart/${productId}`,
-        {
-          quantity,
-        }
-      );
+      const response = await axios.put(`/api/cart/${productId}`, {
+        quantity,
+      });
 
       const newCart = response.data;
       console.log(newCart);
@@ -100,9 +94,7 @@ export function AuthProvider({ children }) {
 
   const removeFromCart = async (productId) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5000/api/cart/${productId}`
-      );
+      const response = await axios.delete(`/api/cart/${productId}`);
       const newCart = response.data;
       console.log("The new cart is ", newCart);
       setCart(newCart);
@@ -114,7 +106,7 @@ export function AuthProvider({ children }) {
   };
 
   const placeOrder = async () => {
-    const response = await axios.post("http://localhost:5000/api/orders");
+    const response = await axios.post("/api/orders");
     console.log("Place Order call---> ", response.data);
     setCart(null);
     localStorage.removeItem("cart");

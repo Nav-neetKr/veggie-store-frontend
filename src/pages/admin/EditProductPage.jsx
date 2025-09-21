@@ -19,9 +19,7 @@ export function EditProductPage() {
   useEffect(() => {
     const getVegetable = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/vegetables/${id}`
-        );
+        const response = await axios.get(`/api/vegetables/${id}`);
         const newVegetable = response.data;
         setFormData({
           name: newVegetable.name,
@@ -48,10 +46,7 @@ export function EditProductPage() {
         dataToSubmit.append("category", formData.category),
         dataToSubmit.append("stock", formData.stock);
       dataToSubmit.append("productImage", image);
-      const response = await axios.put(
-        `http://localhost:5000/api/vegetables/${id}`,
-        dataToSubmit
-      );
+      const response = await axios.put(`/api/vegetables/${id}`, dataToSubmit);
       navigate("/admin/products");
     } catch (err) {
       console.log("Some error occured ", err.message);

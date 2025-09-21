@@ -16,7 +16,7 @@ export function OrderHistoryPage() {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/orders");
+        const response = await axios.get("/api/orders");
         console.log("Orders ", response.data);
         setOrders(response.data);
       } catch (err) {
