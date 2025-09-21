@@ -41,6 +41,7 @@ export function RegisterPage() {
   return (
     <Container component="main" maxWidth="xs">
       <Box
+        component="form"
         sx={{
           marginTop: 8,
           display: "flex",
